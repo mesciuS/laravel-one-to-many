@@ -31,7 +31,8 @@ Route::middleware(['auth', 'verified'])
     ->group(function() {
     // dando il prefix e il name sopra, devo levare /admin e admin punto dal name di questa route
     Route::get('/', [DashboardController::class, 'home'])->name('home');
-    Route::resource('posts', PostController::class);
+    // con quel prametro mi da lo slug nell'url
+    Route::resource('posts', PostController::class)->parameters(['posts' => 'post:slug']);
     
 });
 
